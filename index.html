@@ -2,70 +2,37 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Ver Película con anuncio - Filtradas69</title>
+  <title>Película - Filtrada69</title>
   <style>
-    body {
-      background: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 0; padding: 20px;
-    }
-    #thumbnail {
-      width: 80%;
-      max-width: 900px;
+    .thumbnail {
+      width: 320px;
       cursor: pointer;
-      border-radius: 10px;
-      transition: opacity 0.3s ease;
-    }
-    #videoContainer {
-      margin-top: 20px;
-      display: none;
-    }
-    iframe {
-      width: 80%;
-      height: 450px;
-      border: none;
-      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>🎬 Película en línea - Filtradas69</h1>
 
-  <!-- Miniatura que se clickea -->
-  <img id="thumbnail" src="https://i.postimg.cc/28j4Fr6N/bitcoin-mineria.jpg" alt="Miniatura Película" />
+  <h2>Película Ejemplo</h2>
 
-  <!-- Contenedor del video que estará oculto -->
-  <div id="videoContainer">
-    <iframe 
-      id="movieFrame"
-      src="" 
-      allow="autoplay" 
-      allowfullscreen>
-    </iframe>
-  </div>
+  <!-- Miniatura con onclick -->
+  <img 
+    src="https://i.postimg.cc/28j4Fr6N/bitcoin-mineria.jpg" 
+    alt="Miniatura Película" 
+    class="thumbnail" 
+    onclick="abrirAnuncio()"
+  />
 
   <script>
-    const thumbnail = document.getElementById('thumbnail');
-    const videoContainer = document.getElementById('videoContainer');
-    const movieFrame = document.getElementById('movieFrame');
+    function abrirAnuncio() {
+      // Abrir el anuncio en una nueva pestaña
+      window.open('https://otieu.com/4/9461992', '_blank');
 
-    thumbnail.addEventListener('click', () => {
-      // Abrir anuncio en ventana nueva
-      window.open('https://tu-enlace-de-anuncio.com', '_blank');
-
-      // Opcional: cambiar opacidad de la miniatura para mostrar que se clickeó
-      thumbnail.style.opacity = '0.5';
-
-      // Después de 5 segundos, ocultar la miniatura y mostrar el video
-      setTimeout(() => {
-        thumbnail.style.display = 'none';
-        videoContainer.style.display = 'block';
-        // Aquí ponés tu link del video en el src
-        movieFrame.src = "https://drive.google.com/file/d/1BmE0-5paSdD6jQaR7Fd-NJv9uN3y5TBV/preview";
-      }, 5000);
-    });
+      // Aquí podés agregar código para mostrar el video después si querés
+      // Por ejemplo, cambiar el src de un <video> o redirigir al video real
+      
+      alert('Después de cerrar el anuncio, podés ver la película aquí');
+    }
   </script>
+
 </body>
 </html>
