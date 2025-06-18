@@ -2,11 +2,17 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Película - Filtrada69</title>
+  <title>Película con anuncio antes</title>
   <style>
     .thumbnail {
       width: 320px;
       cursor: pointer;
+    }
+    #videoPlayer {
+      display: none;
+      margin-top: 20px;
+      width: 640px;
+      height: 360px;
     }
   </style>
 </head>
@@ -14,23 +20,35 @@
 
   <h2>Película Ejemplo</h2>
 
-  <!-- Miniatura con onclick -->
+  <!-- Miniatura que el usuario clickea -->
   <img 
     src="https://i.postimg.cc/28j4Fr6N/bitcoin-mineria.jpg" 
     alt="Miniatura Película" 
     class="thumbnail" 
-    onclick="abrirAnuncio()"
+    onclick="abrirAnuncioYMostrarVideo()"
   />
 
-  <script>
-    function abrirAnuncio() {
-      // Abrir el anuncio en una nueva pestaña
-      window.open('https://otieu.com/4/9461992', '_blank');
+  <!-- Reproductor oculto inicialmente -->
+  <video id="videoPlayer" controls>
+    <source src="TU_LINK_DE_VIDEO_AQUI" type="video/mp4" />
+    Tu navegador no soporta la etiqueta de video.
+  </video>
 
-      // Aquí podés agregar código para mostrar el video después si querés
-      // Por ejemplo, cambiar el src de un <video> o redirigir al video real
-      
-      alert('Después de cerrar el anuncio, podés ver la película aquí');
+  <script>
+    function abrirAnuncioYMostrarVideo() {
+      // Abrir anuncio en pestaña nueva
+      const anuncio = window.open('https://otieu.com/4/9461992', '_blank');
+
+      // Esperamos que el usuario cierre la ventana de anuncio
+      const intervalo = setInterval(() => {
+        if (anuncio.closed) {
+          clearInterval(intervalo);
+          // Mostrar video
+          document.getElementById('videoPlayer').style.display = 'block';
+          // Opcional: ocultar la miniatura para evitar nuevos clicks
+          document.querySelector('.thumbnail').style.display = 'none';
+        }
+      }, 500);
     }
   </script>
 
