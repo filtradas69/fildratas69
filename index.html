@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Ver Película - Filtradas69</title>
+  <title>Ver Película con anuncio - Filtradas69</title>
   <style>
     body {
       background: #000;
@@ -11,22 +11,61 @@
       text-align: center;
       margin: 0; padding: 20px;
     }
-    iframe {
-      border: none;
+    #thumbnail {
+      width: 80%;
+      max-width: 900px;
+      cursor: pointer;
       border-radius: 10px;
-      margin-top: 30px;
+      transition: opacity 0.3s ease;
+    }
+    #videoContainer {
+      margin-top: 20px;
+      display: none;
+    }
+    iframe {
       width: 80%;
       height: 450px;
-      max-width: 900px;
+      border: none;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
   <h1>🎬 Película en línea - Filtradas69</h1>
-  <iframe 
-    src="https://drive.google.com/file/d/1BmE0-5paSdD6jQaR7Fd-NJv9uN3y5TBV/preview" 
-    allow="autoplay" 
-    allowfullscreen>
-  </iframe>
+
+  <!-- Miniatura que se clickea -->
+  <img id="thumbnail" src="https://i.postimg.cc/28j4Fr6N/bitcoin-mineria.jpg" alt="Miniatura Película" />
+
+  <!-- Contenedor del video que estará oculto -->
+  <div id="videoContainer">
+    <iframe 
+      id="movieFrame"
+      src="" 
+      allow="autoplay" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <script>
+    const thumbnail = document.getElementById('thumbnail');
+    const videoContainer = document.getElementById('videoContainer');
+    const movieFrame = document.getElementById('movieFrame');
+
+    thumbnail.addEventListener('click', () => {
+      // Abrir anuncio en ventana nueva
+      window.open('https://tu-enlace-de-anuncio.com', '_blank');
+
+      // Opcional: cambiar opacidad de la miniatura para mostrar que se clickeó
+      thumbnail.style.opacity = '0.5';
+
+      // Después de 5 segundos, ocultar la miniatura y mostrar el video
+      setTimeout(() => {
+        thumbnail.style.display = 'none';
+        videoContainer.style.display = 'block';
+        // Aquí ponés tu link del video en el src
+        movieFrame.src = "https://drive.google.com/file/d/1BmE0-5paSdD6jQaR7Fd-NJv9uN3y5TBV/preview";
+      }, 5000);
+    });
+  </script>
 </body>
 </html>
